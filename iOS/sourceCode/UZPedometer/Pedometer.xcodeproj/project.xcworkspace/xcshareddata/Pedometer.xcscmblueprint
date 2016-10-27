@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "bb1f6edc-2750-b443-bb15-590855bc9021++5747",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "bb1f6edc-2750-b443-bb15-590855bc9021++5747" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "bb1f6edc-2750-b443-bb15-590855bc9021++5747" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B1BE0FC3-C1AA-4CF5-91C0-1926C9930D14",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "bb1f6edc-2750-b443-bb15-590855bc9021++5747" : "LvChunFeng\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Pedometer",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ModuleProject\/UZPedometer\/Pedometer.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/chunfeng.lv@192.168.13.120:4443\/svn\/uzModules_IOS",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "bb1f6edc-2750-b443-bb15-590855bc9021++5747"
+    }
+  ]
+}

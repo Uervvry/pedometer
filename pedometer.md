@@ -1,11 +1,13 @@
-#**概述**
+/*
+Title: pedometer
+Description: pedometer
+*/
 
-手机计步器模块（内含iOS和android）
+<p style="color: #ccc; margin-bottom: 30px;">来自于：官方</p>
 
-APICloud 的 pedometer 模块是一个计步器模块。由于 android 平台和 iOS 平台系统差异，本模块分别实现两套计步方案：在 android 平台上开发者自行调用相关接口记录用户不行数据；在 iOS 平台上则直接读取手机系统记录的用户步行数据；由于本模块实现原理的特殊性，应广大开发者要求，特将此模块源码开源，以供 APICloud 平台上的开发者学习使用。开发者可仿照此模块开发自己需要的模块。希望此模块能起到抛砖引玉的作用。
-
-#**模块接口文档**
-
+<ul id="tab" class="clearfix">
+	<li class="active"><a href="#method-content">Method</a></li>
+</ul>
 <div id="method-content">
 
 <div class="outline">
@@ -20,7 +22,7 @@ APICloud 的 pedometer 模块是一个计步器模块。由于 android 平台和
 
 </div>
 
-#**模块概述**
+#**概述**
 
 由于系统平台差异，iOS 和 android 采用不同的计步策略。本模块特封装了两种适合各自平台的相关接口。
 
@@ -236,4 +238,3 @@ pedometer.getStepCount({
 iOS系统
 
 可提供的1.0.0及更高版本
-

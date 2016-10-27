@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=2.0,minimum-scale=1.0,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>newDemoGit</title>
+		<link rel="stylesheet" type="text/css" href="./css/api.css" />
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<input id="mName" placeholder="请输入模块名称"  style="border: 1px solid #eee; height: 60px;" value="UIActionSelector"/>
+		<br />
+		<br />
+		<button onclick="openWin()">
+			指定模块名后可openWin相应模块测试页面.
+		</button>
+	</body>
+	<script type="text/javascript" src="./script/api.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+		}
+		function openWin() {
+			var name = document.getElementById('mName').value;
+			if (name == "" || name == "请输入模块名称") {
+				name = "NVTabBar";
+				console.log("iOS 需要添加logger 模块编译自定义loader，才能在APICloud Studio 输出日志");
+			}
+			api.openFrame({
+				name : 'alibaichuan',
+				url : 'html/' + name + '.' + 'html',
+				//url:"http://192.168.13.101/exphp/1.html",
+				bounces : false,
+				allowEdit : true,
+				scaleEnabled : true,
+				rect : {
+					x : 0,
+					y : 0,
+					w : 'auto',
+					h : 'auto'
+				},
+				slidBackEnabled : true
+			});
+		};
+	</script>
+</html>
