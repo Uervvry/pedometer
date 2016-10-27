@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest >
+
+        <service android:name="com.apicloud.pedometer.StepsDetectService">
+            <intent-filter >
+                <action android:name="com.apicloud.pedometer.StepsDetectService"/>
+            </intent-filter>
+        </service>
+
+</manifest>
