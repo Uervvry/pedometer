@@ -60,7 +60,7 @@ Android 计步器的统计周期为调用 startCount 到调用 stopCount 之间�
 
 在 iOS 平台上使用本功能，需要在 [生成包名（bundle id）](http://docs.apicloud.com/Dev-Guide/iOS-License-Application-Guidance) 的时候，勾选 HealthKit 功能。如下图：
 
-![alert](/img/docImage/pedometer/pedometer.png)
+![alert](http://docs.apicloud.com/img/docImage/pedometer/pedometer.png)
 
 iOS 调用方式及流程：
 
