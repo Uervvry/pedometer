@@ -1,7 +1,0 @@
-
- {
-     "name":"pedometer",
-     "class":"UZPedometer",
-     "methods":["getStepCount"]
- }
- 

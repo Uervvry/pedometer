@@ -1,26 +1,27 @@
-#**概述**
+# **概述**
 
 手机计步器模块（内含iOS和android）
 
 APICloud 的 pedometer 模块是一个计步器模块。由于 android 平台和 iOS 平台系统差异，本模块分别实现两套计步方案：在 android 平台上开发者自行调用相关接口记录用户不行数据；在 iOS 平台上则直接读取手机系统记录的用户步行数据；由于本模块实现原理的特殊性，应广大开发者要求，特将此模块源码开源，以供 APICloud 平台上的开发者学习使用。开发者可仿照此模块开发自己需要的模块。希望此模块能起到抛砖引玉的作用。
 
-#**模块接口文档**
+# **模块接口文档**
 
-<div id="method-content">
+<p style="color: #ccc; margin-bottom: 30px;">来自于：APICloud 官方</p>
+
+<ul id="tab" class="clearfix">
+	<li class="active"><a href="#method-content">Method</a></li>
+</ul>
 
 <div class="outline">
 
-[startCount](#1)
-
-[stopCount](#2)
-
-[getSteps](#3)
-
-[getStepCount](#4)
+[startCount](#startCount)
+[stopCount](#stopCount)
+[getSteps](#getSteps)
+[getStepCount](#getStepCount)
 
 </div>
 
-#**模块概述**
+# **模块概述**
 
 由于系统平台差异，iOS 和 android 采用不同的计步策略。本模块特封装了两种适合各自平台的相关接口。
 
@@ -61,25 +62,25 @@ Android 计步器的统计周期为调用 startCount 到调用 stopCount 之间�
 
 ![alert](/img/docImage/pedometer/pedometer.png)
 
-ios 调用方式及流程：
+iOS 调用方式及流程：
 
     //通过传入统计时间段就可以返回相应时段的步数
 	getStepCount():
 		
 	
 
-#模块接口
+# #模块接口
 
-<div id="1"></div>
+<div id="startCount"></div>
 
-#**startCount**
+# **startCount**
 
  开始计步
 
 startCount(callback(ret))
 
 
-##callback(ret)
+## callback(ret)
 
 ret：
 
@@ -92,7 +93,7 @@ ret：
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 	var pedometer = api.require('pedometer');
@@ -101,41 +102,41 @@ ret：
 	});
 ```
 
-##可用性
+## 可用性
 
 Android系统
 
 可提供的1.0.0及更高版本
 
-<div id="2"></div>
+<div id="stopCount"></div>
 
-#**stopCount**
+# **stopCount**
 
-停止计步****
+停止计步
 
 stopCount()
 
-##示例代码
+## 示例代码
 
 ```js
 var pedometer = api.require('pedometer');
 pedometer.stopCount();
 ```
-##可用性
+## 可用性
 
 Android系统
 
 可提供的1.0.0及更高版本
 
-<div id="3"></div>
+<div id="getSteps"></div>
 
-#**getSteps**
+# **getSteps**
 
 获取当前统计的步数****
 
 getSteps(callback(ret))
 
-##callback(ret)
+## callback(ret)
 
 ret：
 
@@ -149,7 +150,7 @@ ret：
 ```
 
 
-##示例代码
+## 示例代码
 
 ```js
 var pedometer = api.require('pedometer');
@@ -157,21 +158,21 @@ pedometer.getSteps(function(ret) {
     alert(ret.steps);
 });
 ```
-##可用性
+## 可用性
 
 Android系统
 
 可提供的1.0.0及更高版本
 
-<div id="4"></div>
+<div id="getStepCount"></div>
 
-#**getStepCount**
+# **getStepCount**
 
 获取步数
 
 getStepCount({params}, callback(ret))
 
-##params
+## params
 
 startTime:
 
@@ -196,7 +197,7 @@ remove:
 - 描述：（可选项）是否移除人为添加的步行数据
 - 默认：false
 
-##callback(ret)
+## callback(ret)
 
 - 类型：JSON 对象
 - 内部字段：
@@ -218,7 +219,7 @@ remove:
 }
 ```
 
-##示例代码
+## 示例代码
 
 ```js
 var pedometer = api.require('pedometer');
@@ -231,9 +232,8 @@ pedometer.getStepCount({
 });
 ```
 
-##可用性
+## 可用性
 
 iOS系统
 
 可提供的1.0.0及更高版本
-
