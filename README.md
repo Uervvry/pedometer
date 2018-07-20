@@ -58,18 +58,15 @@ Android 计步器的统计周期为调用 startCount 到调用 stopCount 之间�
 
 **注意：**
 
-在 iOS 平台上使用本功能，需要在 [生成包名（bundle id）](http://docs.apicloud.com/Dev-Guide/iOS-License-Application-Guidance) 的时候，勾选 HealthKit 功能。如下图：
+在 iOS 平台上使用本功能，需要在 [生成包名（bundle id）](//docs.apicloud.com/Dev-Guide/iOS-License-Application-Guidance) 的时候，勾选 HealthKit 功能。如下图：
 
-![alert](http://docs.apicloud.com/img/docImage/pedometer/pedometer.png)
+![alert](https://docs.apicloud.com/img/docImage/pedometer/pedometer.png)
 
-iOS 调用方式及流程：
+iOS 上使用本模块前，需要先配置一个 entitlement 文件。配置方法参考论坛帖子 [iOS修改entitlements文件](//community.apicloud.com/bbs/forum.php?mod=viewthread&tid=47691)
 
-    //通过传入统计时间段就可以返回相应时段的步数
-	getStepCount():
-		
-	
+**注意：云编译时要申请勾选‘健康分享’权限。**
 
-# #模块接口
+## 模块接口
 
 <div id="startCount"></div>
 
@@ -178,13 +175,13 @@ startTime:
 
 - 类型：字符串
 - 描述：开始日期
-- 格式：2016-09-01 13:20:30
+- 格式：yyyy-MM-dd HH:mm:ss 如：2016-09-01 13:20:30
 
 endTime:
 
 - 类型：字符串
 - 描述：结束日期（结束日期和开始日期之间的差值不得超过三天，如果超过三天，按三天来算。）
-- 格式：2016-10-01 10:20:30
+- 格式：yyyy-MM-dd HH:mm:ss 如：2016-10-01 10:20:30
 
 count:
 
@@ -205,12 +202,24 @@ remove:
 ```js
 {
 	  total     : 0             //数字类型，行走的总步数
-	  beginTime : '',           //字符串类型，开始时间       
-	  finishTime   : '',        //字符串类型，完成时间
-	  details:[{                //详情数据
-			  stepCount : 20,    
-			  startTime : '',
-			  endTime   : '',  
+	  beginTime : '',           //字符串类型，开始时间，格式：yyyy-MM-dd HH:mm:ss  
+	  finishTime   : '',        //字符串类型，完成时间，格式：yyyy-MM-dd HH:mm:ss
+	  details:[{                //数组类型；详情数据
+			  stepCount : 20,    //数字类型；步数
+			  startTime : '',    //字符串类型；开始时间，格式：yyyy-MM-dd HH:mm:ss
+			  endTime   : '',    //字符串类型；结束时间，格式：yyyy-MM-dd HH:mm:ss
+			  source: {          //JSON对象；数据源信息
+			      name: 'APICloud的 Apple Watch',//字符串类型；名字
+			      version: '3.2.2',           //字符串类型；版本号
+			      bId: '',                    //字符串类型；bundleIdentifier
+			  },
+			  device: {             //JSON对象；数据源的设备信息，假如本数据来自iphone的其它app（如小米运动等）则本参数为空
+			      name: 'Apple Watch',       //字符串类型；名字
+			      manufacturer:'Apple',      //字符串类型；制造商
+			      model:'Watch',             //字符串类型；设备类型
+			      hardwareVersion:'Watch1,1' //字符串类型；固件版本
+			      softwareVersion:'3.2.2  '  //字符串类型；软件版本
+			  }
 	  },{ 
 			  stepCount : 30,
 			  startTime : '',
