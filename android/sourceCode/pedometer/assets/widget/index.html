@@ -1,52 +1,36 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="maximum-scale=2.0,minimum-scale=1.0,initial-scale=1.0" />
-		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-		<title>newDemoGit</title>
-		<link rel="stylesheet" type="text/css" href="./css/api.css" />
-		<style type="text/css">
-		</style>
-	</head>
-	<body>
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<input id="mName" placeholder="请输入模块名称"  style="border: 1px solid #eee; height: 60px;" value="UIActionSelector"/>
-		<br />
-		<br />
-		<button onclick="openWin()">
-			指定模块名后可openWin相应模块测试页面.
-		</button>
-	</body>
-	<script type="text/javascript" src="./script/api.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>WinC</title>
+    <link rel="stylesheet" type="text/css" href="css/api.css" />
+    <link rel="stylesheet" type="text/css" href="css/box.css" />
+    <script type="text/javascript" src="script/public.js"></script>
+    <style>
+    	p{
+    		color:#999;
+    		padding:5px;
+    	}
+    </style>
 	<script type="text/javascript">
-		apiready = function() {
-		}
-		function openWin() {
-			var name = document.getElementById('mName').value;
-			if (name == "" || name == "请输入模块名称") {
-				name = "NVTabBar";
-				console.log("iOS 需要添加logger 模块编译自定义loader，才能在APICloud Studio 输出日志");
-			}
-			api.openFrame({
-				name : 'alibaichuan',
-				url : 'html/' + name + '.' + 'html',
-				//url:"http://192.168.13.101/exphp/1.html",
-				bounces : false,
-				allowEdit : true,
-				scaleEnabled : true,
-				rect : {
-					x : 0,
-					y : 0,
-					w : 'auto',
-					h : 'auto'
-				},
-				slidBackEnabled : true
-			});
-		};
+	    apiready = function(){
+			fixStatusBar();//沉浸式效果，支持IOS7及Android4.4及以上
+			openContent('index_frm.html', 'index_frm');//打开主frame
+			$('year').innerHTML = new Date().getFullYear();
+	    };
 	</script>
+</head>
+<body>
+    <div id="wrap">
+        <div id='header'>
+            <h1>模块开发实例</h1>
+        </div>
+        <div id="main"></div>
+        <div id="footer">
+            <h5>APICloud Copyright &copy;<span id="year"></span> </h5>
+        </div>
+    </div>
+</body>
 </html>

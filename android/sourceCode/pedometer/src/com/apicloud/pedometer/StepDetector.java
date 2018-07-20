@@ -1,3 +1,9 @@
+/**
+ * APICloud Modules
+ * Copyright (c) 2014-2015 by APICloud, Inc. All Rights Reserved.
+ * Licensed under the terms of the The MIT License (MIT).
+ * Please see the license.html included with this distribution for details.
+ */
 package com.apicloud.pedometer;
 
 /*
@@ -24,11 +30,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-/**
- * Detects steps and notifies all listeners (that implement StepListener).
- * @author Levente Bagi
- * @todo REFACTOR: SensorListener is deprecated
- */
 public class StepDetector implements SensorEventListener {
 	
     private float   mLimit = 10;
@@ -84,7 +85,7 @@ public class StepDetector implements SensorEventListener {
 
                         if (diff > mLimit) {
                             
-                            boolean isAlmostAsLargeAsPrevious = diff > (mLastDiff[k]*2/3);
+                            boolean isAlmostAsLargeAsPrevious = diff > (mLastDiff[k] * 2 / 3);
                             boolean isPreviousLargeEnough = mLastDiff[k] > (diff/3);
                             boolean isNotContra = (mLastMatch != 1 - extType);
                             

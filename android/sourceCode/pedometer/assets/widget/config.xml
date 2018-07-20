@@ -1,71 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<widget id="A6903010123826" version="0.0.1">
-	<name>newDemoGit</name>
-	<description/>
-	<author email="qa1@apicloud.com" href="http://www.apicloud.com">技术支持-F</author>
-	<content src="index.html"/>
-	<preference name="pageBounce" value="true"/>
-	<preference name="appBackground" value="rgba(0,0,0,0.0)"/>
-	<preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
-	<preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>
-	<preference name="hScrollBarEnabled" value="true"/>
-	<preference name="vScrollBarEnabled" value="true"/>
-	<preference name="autoLaunch" value="true"/>
-	<preference name="fullScreen" value="false"/>
-	<preference name="autoUpdate" value="true"/>
-	<preference name="smartUpdate" value="false"/>
-	<preference name="debug" value="true"/>
-	<preference name="wifidebug" value="true"/>
-	<preference name="statusBarAppearance" value="true"/>
-	<preference name="backgroundMode" value="audio | location"/>
-	<preference name="customRefreshHeader" value="UIPullRefresh"/>
-	<preference name="userAgent" value="APICloud"/>
-	<preference name="urlScheme" value="newdemogit"/>
-	<meta-data name="com.alibaba.app.appkey" value="23420104"/>
-	<meta-data name="com.alibaba.app.appsecret" value="4a8e90a279c7c116883925cc0b5784bc"/>
-	<permission name="readPhoneState"/>
-	<permission name="camera"/>
-	<permission name="record"/>
-	<permission name="location"/>
-	<permission name="fileSystem"/>
-	<permission name="internet"/>
-	<permission name="bootCompleted"/>
-	<permission name="hardware"/>
-	<access origin="*"/>
-	<!--
-	<feature name="qiniuUpfile">
-	<param name="bucket" value="fengcheng"/>
-	<param name="SecretKey" value="BKmlyR1jo59Q5LGrtXAZNLe0otrQT8OzAz0DFLOc"/>
-	<param name="AccessKey" value="gU-sLTFWom4wIJgO8lSQi1QnRA8dRGlixI9eXv-q"/>
-	</feature>
-
-	<feature name="aliPush">
-	<param name="AppKey" value="23420104"/>
-	<param name="AppSecret" value="4a8e90a279c7c116883925cc0b5784bc"/>
-	</feature>
-
-	<feature name="bMap">
-	<param name="android_api_key" value="Sdq7pO5EAjzDvGndzjBQfPulGxiP5AmU"/>
-	<param name="ios_api_key" value="DtiweLmW8ko5RgUHDdbdAbY5"/>
-	</feature>
-	<feature name="smsVerify">
-	<param name="android_app_key" value="151a1cb85bdfe"/>
-	<param name="android_app_secret" value="e592567802048653c6840f5fdcbc2e41"/>
-	<param name="ios_app_key" value="151a3ddd0084c"/>
-	<param name="ios_app_secret" value="2f98c22b1039d188842d0cee5c7c4e87"/>
-	</feature>
-
-	<feature name="aMap">
-	<param name="android_api_key" value="f7Is0dWLom2q6rV3ZfFPZ1aa" />
-	<param name="ios_api_key" value="19616035c2000f14ea2805a127b9356c" />
-	</feature>
-
-	<feature name="umengAnalytics">
-	<param name="ios_app_key" value="57a33568e0f55a74fd003a5f"/>
-	<param name="ios_app_channel" value="APICloud_iOS"/>
-	<param name="android_app_key" value="57a334fbe0f55af7c2003845"/>
-	<param name="android_app_channel" value="APICloud_Android"/>
-	</feature>
-	-->
+<widget id="A0000000000001"  version="0.0.1">
+    <name>ModuleDemo</name>
+    <description>A sample of APICloud module extension.</description>
+    <author email="developer@apicloud.com" href="http://www.apicloud.com">
+        developer
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="bounces" value="true" />
+    <preference name="customRefreshHeader" value="cusHeader" />
 </widget>

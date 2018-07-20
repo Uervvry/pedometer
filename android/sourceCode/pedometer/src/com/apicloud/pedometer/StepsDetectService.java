@@ -1,3 +1,9 @@
+/**
+ * APICloud Modules
+ * Copyright (c) 2014-2015 by APICloud, Inc. All Rights Reserved.
+ * Licensed under the terms of the The MIT License (MIT).
+ * Please see the license.html included with this distribution for details.
+ */
 package com.apicloud.pedometer;
 
 import android.app.Service;
@@ -11,7 +17,6 @@ public class StepsDetectService extends Service{
 	private SensorManager mSensorManager;
 	private Sensor mSensor;
 	private StepDetector mStepDetector;
-	
 	public static int steps = 0;
 	
 	@Override

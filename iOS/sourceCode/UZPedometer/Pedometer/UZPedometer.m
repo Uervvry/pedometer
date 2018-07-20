@@ -1,6 +1,6 @@
 /**
  * APICloud Modules
- * Copyright (c) 2014-2015 by APICloud, Inc. All Rights Reserved.
+ * Copyright (c) 2014-2018 by APICloud, Inc. All Rights Reserved.
  * Licensed under the terms of the The MIT License (MIT).
  * Please see the license.html included with this distribution for details.
  */
@@ -14,8 +14,11 @@
 
 - (void)getStepCount:(NSDictionary *)paramsDict_ {
     if ([UZHealthStore isHealthDataAvailable]) {
+        //访问健康的对象
         UZHealthStore *healthStore = [UZHealthStore shareInstance];
+        //获取的数据类型，步数（手机+手表）
         HKObjectType *stepCountType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+        //获取数据类型的集合
         NSSet *healthSet = [NSSet setWithObject:stepCountType];
         //请求授权
         [healthStore requestAuthorizationToShareTypes:nil readTypes:healthSet completion:^(BOOL success, NSError * _Nullable error) {
@@ -25,7 +28,7 @@
                 NSString *endTime = [paramsDict_ stringValueForKey:@"endTime" defaultValue:@""];
                 BOOL remove = [paramsDict_ boolValueForKey:@"remove" defaultValue:false];
                 int readStepCountCbId = [paramsDict_ intValueForKey:@"cbId" defaultValue:-1];
-                if (startTime.length < 1 || endTime.length < 1) return ;
+                if (startTime.length<1 || endTime.length<1) return ;
 
                 //查询采样信息
                 HKSampleType *sampleType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
@@ -33,18 +36,18 @@
                 //NSSortDescriptors用来告诉healthStore怎么样将结果排序。
                 NSSortDescriptor *start = [NSSortDescriptor sortDescriptorWithKey:HKSampleSortIdentifierStartDate ascending:NO];
                 NSSortDescriptor *end = [NSSortDescriptor sortDescriptorWithKey:HKSampleSortIdentifierEndDate ascending:NO];
-
+                //时间：开始-------------->结束------->
                 NSDateFormatter *tempFormatter = [self setupCurrentDateFormatter];
                 NSDate *currentStartDate  = [tempFormatter  dateFromString:startTime];
                 NSDate *currentEndDate  = [tempFormatter  dateFromString:endTime];
-                
+                //开始时间往后推三天，超过三天则以三天为准
                 NSTimeInterval threeDay = 3 * 60 * 60 *24;
                 NSDate *endDate = [NSDate dateWithTimeInterval:threeDay sinceDate:currentStartDate];
                 if ([currentEndDate compare:endDate] == NSOrderedDescending) {
                     currentEndDate = endDate;
                 }
                 
-                //predicate
+                //先生成一个断言，观察者根据断言去获取数据
                 NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:currentStartDate endDate:currentEndDate options:HKQueryOptionNone];
                 
                 //观察者查询
@@ -67,11 +70,52 @@
                                         result = nil;
                                     }
                                 }
+                                //装填、打包数据
+                                NSMutableDictionary *detailDict = [NSMutableDictionary dictionary];
+                                HKSource *source = result.source;
+                                NSString *bundleIdentifier = source.bundleIdentifier;
+                                NSString *name = source.name;
+                                HKSourceRevision *sourceRevision = result.sourceRevision;
+                                NSString *version = sourceRevision.version;
+                                if (![bundleIdentifier isKindOfClass:[NSString class]] || bundleIdentifier.length==0) {
+                                    bundleIdentifier = @"";
+                                }
+                                if (![name isKindOfClass:[NSString class]] || name.length==0) {
+                                    name = @"";
+                                }
+                                if (![version isKindOfClass:[NSString class]] || version.length==0) {
+                                    version = @"";
+                                }
+                                NSDictionary *sourceDict = @{@"name":name,@"version":version,@"bId":bundleIdentifier};
+                                [detailDict setObject:sourceDict forKey:@"source"];
+                                
+                                HKDevice *device = result.device;
+                                NSString *nameDe = device.name;
+                                NSString *manufacturerDe = device.manufacturer;
+                                NSString *modelDe = device.model;
+                                NSString *hardwareVersionDe = device.hardwareVersion;
+                                NSString *softwareVersionDe = device.softwareVersion;
+                                if (![nameDe isKindOfClass:[NSString class]] || nameDe.length==0) {
+                                    nameDe = @"";
+                                }
+                                if (![manufacturerDe isKindOfClass:[NSString class]] || manufacturerDe.length==0) {
+                                    manufacturerDe = @"";
+                                }
+                                if (![modelDe isKindOfClass:[NSString class]] || modelDe.length==0) {
+                                    modelDe = @"";
+                                }
+                                if (![hardwareVersionDe isKindOfClass:[NSString class]] || hardwareVersionDe.length==0) {
+                                    hardwareVersionDe = @"";
+                                }
+                                if (![softwareVersionDe isKindOfClass:[NSString class]] || softwareVersionDe.length==0) {
+                                    softwareVersionDe = @"";
+                                }
+                                NSDictionary *deviceDict = @{@"name":nameDe,@"manufacturer":manufacturerDe,@"model":modelDe,@"hardwareVersion":hardwareVersionDe,@"softwareVersion":softwareVersionDe};
+                                [detailDict setObject:deviceDict forKey:@"device"];
                                 
                                 //步数
                                 HKQuantity *quantity = result.quantity;
                                 NSUInteger stepCount = (NSUInteger)[quantity doubleValueForUnit:[HKUnit unitFromString:@""]];
-                                NSMutableDictionary *detailDict = [NSMutableDictionary dictionary];
                                 if (quantity) {
                                     [detailDict setObject:@(stepCount)forKey:@"stepCount"];
                                 }
